@@ -7,13 +7,11 @@ const nodemailer = require('nodemailer')
 const cors = require('cors')
 const jwt = require('jsonwebtoken')
 const dotenv = require('dotenv')
-const { log } = require('console')
-
 
 
 const app = express()
 dotenv.config()
-const port = 8000
+const port = process.env.PORT
 // middleware
 app.use(bodyParesr.urlencoded({ extended: true }))
 app.use(bodyParesr.json())
@@ -28,6 +26,9 @@ mongoose.connect(process.env.MONGO_URL)
 
 })
 
+app.get('/',(req,res)=>{
+    res.send('Testing')
+})
 app.listen(port, () => {
     console.log('Server is running');
 })
