@@ -2,14 +2,16 @@ import React, { useState } from 'react'
 import { StyleSheet, Text, View, SafeAreaView, Image, KeyboardAvoidingView, TextInput, Pressable } from 'react-native'
 import { MaterialIcons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 const LoginScreen = () => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const navigation = useNavigation()
 
   return (
-    <SafeAreaView style={styles.container} >
+    <SafeAreaView style={{ flex: 1, backgroundColor: 'white', alignItems: 'center', }} >
       <View>
         <Image
           style={{ width: 150, height: 100 }}
@@ -19,10 +21,9 @@ const LoginScreen = () => {
         />
       </View>
       <KeyboardAvoidingView>
-        <View style={{ alignItems: 'center ', display: 'flex' }}>
-          <Text style={styles.text}>Login In To Your Account</Text>
-        </View>
-
+        <Text style={{ textAlign: 'center', fontSize: 17, fontWeight: 'bold', marginTop: 12, color: '#041E42' }}>
+          Login To Your Account
+        </Text>
         <View style={{ marginTop: 70 }}>
           <View
             style={styles.viewStyleCss}
@@ -74,8 +75,8 @@ const LoginScreen = () => {
         <Pressable style={styles.logButton}>
           <Text style={{ textAlign: 'center', color: 'white', fontSize: 16, fontWeight: "bold" }} >Login</Text>
         </Pressable>
-        <Pressable style={{marginTop:15}}>
-          <Text style={{textAlign:'center',color:'gray',fontSize:16}}>Dont have account? Sign up </Text>
+        <Pressable style={{ marginTop: 15 }} onPress={() => navigation.navigate('Register')}>
+          <Text style={{ textAlign: 'center', color: 'gray', fontSize: 16 }}>Dont have account? Sign up </Text>
         </Pressable>
       </KeyboardAvoidingView>
     </SafeAreaView>
@@ -86,7 +87,6 @@ export default LoginScreen
 
 const styles = StyleSheet.create({
   container: {
-    display: 'flex:1',
     backgroundColor: 'white',
     alignItems: 'center'
   },
@@ -95,8 +95,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginTop: 12,
     color: "#041E42",
-    alignItems: 'center',
-    display: 'flex'
   },
   textInput: {
     color: 'gray',
@@ -113,7 +111,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
   logButton: {
-    width: 200,
+    width: 300,
     backgroundColor: '#FEBE10',
     borderRadius: 6,
     marginLeft: 'auto',
